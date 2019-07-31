@@ -1,50 +1,58 @@
 import React from "react";
 import { storiesOf } from "@storybook/react";
 import { action } from "@storybook/addon-actions";
+import { withInfo } from "@storybook/addon-info";
 
-import Button from "./Button";
+import Button, { ButtonComponent } from "./Button";
 
 export const actions = {
   onClick: action("onClick")
 };
 
 storiesOf("Button", module)
-  .add("Default", () => (
-    <div>
-      <h1>Standard Button</h1>
-      <Button
-        color="primary"
-        style={{ marginRight: "10px" }}
-        onClick={actions.onClick}
-      >
-        Primary
-      </Button>
+  .add(
+    "Default",
+    withInfo({
+      source: false,
+      propTables: [ButtonComponent],
+      propTablesExclude: [Button]
+    })(() => (
+      <div>
+        <h1>Standard Button</h1>
+        <Button
+          color="primary"
+          style={{ marginRight: "10px" }}
+          onClick={actions.onClick}
+        >
+          Primary
+        </Button>
 
-      <Button
-        color="secondary"
-        style={{ marginRight: "10px" }}
-        onClick={actions.onClick}
-      >
-        Secondary
-      </Button>
+        <Button
+          color="secondary"
+          style={{ marginRight: "10px" }}
+          onClick={actions.onClick}
+        >
+          Secondary
+        </Button>
 
-      <Button
-        color="confirmation"
-        style={{ marginRight: "10px" }}
-        onClick={actions.onClick}
-      >
-        Confirmation
-      </Button>
+        <Button
+          color="confirmation"
+          style={{ marginRight: "10px" }}
+          onClick={actions.onClick}
+        >
+          Confirmation
+        </Button>
 
-      <Button
-        color="danger"
-        style={{ marginRight: "10px" }}
-        onClick={actions.onClick}
-      >
-        Danger
-      </Button>
-    </div>
-  ))
+        <Button
+          color="danger"
+          style={{ marginRight: "10px" }}
+          onClick={actions.onClick}
+        >
+          Danger
+        </Button>
+      </div>
+    ))
+  )
   .add("Disabled State", () => (
     <div>
       <h1>Disabled State</h1>

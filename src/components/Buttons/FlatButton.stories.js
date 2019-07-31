@@ -1,42 +1,50 @@
 import React from "react";
 import { storiesOf } from "@storybook/react";
 import { action } from "@storybook/addon-actions";
+import { withInfo } from "@storybook/addon-info";
 
-import FlatButton from "./FlatButton";
+import FlatButton, { FlatButtonComponent } from "./FlatButton";
 
 export const actions = {
   onClick: action("onClick")
 };
 
 storiesOf("FlatButton", module)
-  .add("Default", () => (
-    <div>
-      <h1>Standard FlatButton</h1>
-      <FlatButton
-        color="primary"
-        style={{ marginRight: "10px" }}
-        onClick={actions.onClick}
-      >
-        Primary
-      </FlatButton>
+  .add(
+    "Default",
+    withInfo({
+      source: false,
+      propTables: [FlatButtonComponent],
+      propTablesExclude: [FlatButton]
+    })(() => (
+      <div>
+        <h1>Standard FlatButton</h1>
+        <FlatButton
+          color="primary"
+          style={{ marginRight: "10px" }}
+          onClick={actions.onClick}
+        >
+          Primary
+        </FlatButton>
 
-      <FlatButton
-        color="secondary"
-        style={{ marginRight: "10px" }}
-        onClick={actions.onClick}
-      >
-        Secondary
-      </FlatButton>
+        <FlatButton
+          color="secondary"
+          style={{ marginRight: "10px" }}
+          onClick={actions.onClick}
+        >
+          Secondary
+        </FlatButton>
 
-      <FlatButton
-        color="danger"
-        style={{ marginRight: "10px" }}
-        onClick={actions.onClick}
-      >
-        Danger
-      </FlatButton>
-    </div>
-  ))
+        <FlatButton
+          color="danger"
+          style={{ marginRight: "10px" }}
+          onClick={actions.onClick}
+        >
+          Danger
+        </FlatButton>
+      </div>
+    ))
+  )
   .add("Disabled State", () => (
     <div>
       <h1>Disabled State</h1>

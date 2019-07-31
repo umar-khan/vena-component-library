@@ -177,4 +177,5 @@ FlatButton.propTypes = {
   children: PropTypes.node
 };
 
+export const FlatButtonComponent = FlatButton;
 export default withStyles(styles)(FlatButton);

@@ -201,4 +201,5 @@ Button.propTypes = {
   children: PropTypes.node
 };
 
+export const ButtonComponent = Button;
 export default withStyles(styles)(Button);
