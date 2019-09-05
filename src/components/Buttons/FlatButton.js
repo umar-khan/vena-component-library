@@ -13,89 +13,91 @@ import {
   WHITE
 } from "../../styles/colours";
 
-const styles = {
-  root: {
-    minHeight: "36px",
-    minWidth: "80px",
-    paddingLeft: "16px",
-    paddingRight: "16px",
-    borderRadius: "6px",
-    fontSize: "14px",
-    fontWeight: "bold",
-    textTransform: "none",
+const styles = theme => {
+  return {
+    root: {
+      minHeight: "36px",
+      minWidth: "80px",
+      paddingLeft: "16px",
+      paddingRight: "16px",
+      borderRadius: "6px",
+      fontSize: "14px",
+      fontWeight: "bold",
+      textTransform: "none",
 
-    "&:disabled": {
-      cursor: "not-allowed",
-      pointerEvents: "auto"
+      "&:disabled": {
+        cursor: "not-allowed",
+        pointerEvents: "auto"
+      }
+    },
+    primary: {
+      color: BLUE_50,
+
+      "&:hover": {
+        backgroundColor: BLUE_10
+      },
+
+      "&:disabled": {
+        backgroundColor: WHITE,
+        color: GRAY_50
+      },
+
+      "&:disabled&:hover": {
+        backgroundColor: WHITE,
+        color: GRAY_50
+      }
+    },
+    secondary: {
+      color: BLACK,
+
+      "&:hover": {
+        backgroundColor: GRAY_50
+      },
+
+      "&:disabled": {
+        backgroundColor: WHITE,
+        color: GRAY_50
+      },
+
+      "&:disabled&:hover": {
+        backgroundColor: WHITE,
+        color: GRAY_50
+      }
+    },
+    danger: {
+      color: RED_50,
+
+      "&:hover": {
+        backgroundColor: RED_10
+      },
+
+      "&:disabled": {
+        backgroundColor: WHITE,
+        color: GRAY_50
+      },
+
+      "&:disabled&:hover": {
+        backgroundColor: WHITE,
+        color: GRAY_50
+      }
+    },
+    icon: {
+      marginRight: "8px"
+    },
+    buttonLabel: {
+      backgroundColor: "inherit" // We need this hear so that loadingIconContainer can inherit the button background color
+    },
+    loadingIconContainer: {
+      position: "absolute",
+      display: "flex",
+      justifyContent: "center",
+      alignItems: "center",
+      width: "100%",
+      height: "24px",
+      color: BLACK,
+      backgroundColor: "inherit"
     }
-  },
-  primary: {
-    color: BLUE_50,
-
-    "&:hover": {
-      backgroundColor: BLUE_10
-    },
-
-    "&:disabled": {
-      backgroundColor: WHITE,
-      color: GRAY_50
-    },
-
-    "&:disabled&:hover": {
-      backgroundColor: WHITE,
-      color: GRAY_50
-    }
-  },
-  secondary: {
-    color: BLACK,
-
-    "&:hover": {
-      backgroundColor: GRAY_50
-    },
-
-    "&:disabled": {
-      backgroundColor: WHITE,
-      color: GRAY_50
-    },
-
-    "&:disabled&:hover": {
-      backgroundColor: WHITE,
-      color: GRAY_50
-    }
-  },
-  danger: {
-    color: RED_50,
-
-    "&:hover": {
-      backgroundColor: RED_10
-    },
-
-    "&:disabled": {
-      backgroundColor: WHITE,
-      color: GRAY_50
-    },
-
-    "&:disabled&:hover": {
-      backgroundColor: WHITE,
-      color: GRAY_50
-    }
-  },
-  icon: {
-    marginRight: "8px"
-  },
-  buttonLabel: {
-    backgroundColor: "inherit" // We need this hear so that loadingIconContainer can inherit the button background color
-  },
-  loadingIconContainer: {
-    position: "absolute",
-    display: "flex",
-    justifyContent: "center",
-    alignItems: "center",
-    width: "100%",
-    height: "24px",
-    color: BLACK,
-    backgroundColor: "inherit"
-  }
+  };
 };
 
 function FlatButton({
