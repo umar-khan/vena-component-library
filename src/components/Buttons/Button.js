@@ -19,107 +19,124 @@ import {
   WHITE
 } from "../../styles/colours";
 
-const styles = {
+const webStyles = {
   root: {
     minHeight: "36px",
-    minWidth: "80px",
-    paddingLeft: "16px",
-    paddingRight: "16px",
-    borderRadius: "6px",
-    fontSize: "14px",
-    fontWeight: "bold",
-    color: WHITE,
-    textTransform: "none",
-
-    "&:disabled": {
-      cursor: "not-allowed",
-      pointerEvents: "auto"
-    }
-  },
-  primary: {
-    backgroundColor: BLUE_50,
-
-    "&:hover": {
-      backgroundColor: BLUE_70
-    },
-
-    "&:disabled": {
-      backgroundColor: BLUE_30,
-      color: WHITE
-    },
-
-    "&:disabled&:hover": {
-      backgroundColor: BLUE_30,
-      color: WHITE
-    }
-  },
-  secondary: {
-    backgroundColor: GRAY_50,
-    color: BLACK,
-
-    "&:hover": {
-      backgroundColor: GRAY_70
-    },
-
-    "&:disabled": {
-      backgroundColor: GRAY_50,
-      color: GRAY_70
-    },
-
-    "&:disabled&:hover": {
-      backgroundColor: GRAY_50,
-      color: GRAY_70
-    }
-  },
-  confirmation: {
-    backgroundColor: GREEN_50,
-
-    "&:hover": {
-      backgroundColor: GREEN_70
-    },
-
-    "&:disabled": {
-      backgroundColor: GREEN_30,
-      color: WHITE
-    },
-
-    "&:disabled&:hover": {
-      backgroundColor: GREEN_30,
-      color: WHITE
-    }
-  },
-  danger: {
-    backgroundColor: RED_50,
-
-    "&:hover": {
-      backgroundColor: RED_70
-    },
-
-    "&:disabled": {
-      backgroundColor: RED_30,
-      color: WHITE
-    },
-
-    "&:disabled&:hover": {
-      backgroundColor: RED_30,
-      color: WHITE
-    }
-  },
-  icon: {
-    marginRight: "8px"
-  },
-  buttonLabel: {
-    backgroundColor: "inherit" // We need this hear so that loadingIconContainer can inherit the button background color
-  },
-  loadingIconContainer: {
-    position: "absolute",
-    display: "flex",
-    justifyContent: "center",
-    alignItems: "center",
-    width: "100%",
-    height: "24px",
-    backgroundColor: "inherit"
+    borderRadius: "6px"
   }
+};
+
+const addinStyles = {
+  root: {
+    minHeight: "32px",
+    borderRadius: "0",
+    lineHeight: "20px",
+    boxShadow: "none"
+  }
+};
+
+const styles = theme => {
+  return {
+    root: {
+      minWidth: "80px",
+      paddingLeft: "16px",
+      paddingRight: "16px",
+      fontSize: "14px",
+      fontWeight: "bold",
+      color: WHITE,
+      textTransform: "none",
+
+      "&:disabled": {
+        cursor: "not-allowed",
+        pointerEvents: "auto"
+      },
+      ...(theme.venaTheme === "addin" ? addinStyles.root : webStyles.root)
+    },
+    primary: {
+      backgroundColor: BLUE_50,
+
+      "&:hover": {
+        backgroundColor: BLUE_70
+      },
+
+      "&:disabled": {
+        backgroundColor: BLUE_30,
+        color: WHITE
+      },
+
+      "&:disabled&:hover": {
+        backgroundColor: BLUE_30,
+        color: WHITE
+      }
+    },
+    secondary: {
+      backgroundColor: GRAY_50,
+      color: BLACK,
+
+      "&:hover": {
+        backgroundColor: GRAY_70
+      },
+
+      "&:disabled": {
+        backgroundColor: GRAY_50,
+        color: GRAY_70
+      },
+
+      "&:disabled&:hover": {
+        backgroundColor: GRAY_50,
+        color: GRAY_70
+      }
+    },
+    confirmation: {
+      backgroundColor: GREEN_50,
+
+      "&:hover": {
+        backgroundColor: GREEN_70
+      },
+
+      "&:disabled": {
+        backgroundColor: GREEN_30,
+        color: WHITE
+      },
+
+      "&:disabled&:hover": {
+        backgroundColor: GREEN_30,
+        color: WHITE
+      }
+    },
+    danger: {
+      backgroundColor: RED_50,
+
+      "&:hover": {
+        backgroundColor: RED_70
+      },
+
+      "&:disabled": {
+        backgroundColor: RED_30,
+        color: WHITE
+      },
+
+      "&:disabled&:hover": {
+        backgroundColor: RED_30,
+        color: WHITE
+      }
+    },
+    icon: {
+      marginRight: "8px"
+    },
+    buttonLabel: {
+      backgroundColor: "inherit" // We need this hear so that loadingIconContainer can inherit the button background color
+    },
+    loadingIconContainer: {
+      position: "absolute",
+      display: "flex",
+      justifyContent: "center",
+      alignItems: "center",
+      width: "100%",
+      height: "24px",
+      backgroundColor: "inherit"
+    }
+  };
 };
 
 function Button({
