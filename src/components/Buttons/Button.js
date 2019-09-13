@@ -8,8 +8,8 @@ import {
   GREEN_50,
   GREEN_70,
   BLUE_30,
-  BLUE_50,
   BLUE_70,
+  BLUE_90,
   GRAY_50,
   GRAY_70,
   RED_30,
@@ -53,10 +53,10 @@ const styles = theme => {
       ...(theme.venaTheme === "addin" ? addinStyles.root : webStyles.root)
     },
     primary: {
-      backgroundColor: BLUE_50,
+      backgroundColor: BLUE_70,
 
       "&:hover": {
-        backgroundColor: BLUE_70
+        backgroundColor: BLUE_90
       },
 
       "&:disabled": {
