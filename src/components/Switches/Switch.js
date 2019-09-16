@@ -1,17 +1,9 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { withStyles } from "@material-ui/core/styles";
-import FormGroup from "@material-ui/core/FormGroup";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
-import Fade from "@material-ui/core/Fade";
 import MuiSwitch from "@material-ui/core/Switch";
-import {
-  GREEN_50,
-  GREEN_70,
-  GRAY_50,
-  GRAY_70,
-  WHITE
-} from "../../styles/colours";
+import { GREEN_50, GRAY_50, GRAY_70, WHITE } from "../../styles/colours";
 
 const styles = theme => ({
   switchBase: {
@@ -74,6 +66,7 @@ const Switch = ({ classes, checked, onChange, enabledText, disabledText }) => (
           iconChecked: classes.switchIconChecked,
           checked: classes.switchChecked
         }}
+        inputProps={{ "aria-checked": checked }}
         checked={checked}
         onChange={onChange}
       />

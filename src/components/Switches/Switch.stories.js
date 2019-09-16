@@ -4,8 +4,6 @@ import { action } from "@storybook/addon-actions";
 import { withInfo } from "@storybook/addon-info";
 import { createMuiTheme, MuiThemeProvider } from "@material-ui/core/styles";
 
-import Grid from "@material-ui/core/Grid";
-import Typography from "@material-ui/core/Typography";
 import Switch, { SwitchComponent } from "./Switch";
 
 export const actions = {
@@ -38,7 +36,7 @@ class SwitchDemo extends React.Component {
   }
 }
 
-storiesOf("Switch", module).add(
+storiesOf("Switch").add(
   "Default",
   withInfo({
     source: false,
