@@ -33,7 +33,6 @@ const styles = theme => ({
     }
   },
   switchBar: {
-    boxShadow: theme.shadows[1],
     borderRadius: 10,
     width: 30,
     height: 16,
@@ -45,19 +44,22 @@ const styles = theme => ({
   switchIcon: {
     width: 12,
     height: 12,
-    marginLeft: 23
+    marginLeft: 23,
+    boxShadow: "none"
   },
   switchLabelOn: {
     color: GREEN_50,
     fontWeight: 700,
     fontSize: 12,
-    marginTop: 1
+    marginTop: 1,
+    fontFamily: "Open Sans"
   },
   switchLabelOff: {
     color: GRAY_70,
     fontWeight: 700,
     fontSize: 12,
-    marginTop: 1
+    marginTop: 1,
+    fontFamily: "Open Sans"
   }
 });
 
