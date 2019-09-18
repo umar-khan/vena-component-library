@@ -22,7 +22,8 @@ import {
 const webStyles = {
   root: {
     minHeight: "36px",
-    borderRadius: "6px"
+    borderRadius: "6px",
+    fontWeight: "bold"
   }
 };
 
@@ -42,7 +43,6 @@ const styles = theme => {
       paddingLeft: "16px",
       paddingRight: "16px",
       fontSize: "14px",
-      fontWeight: "bold",
       color: WHITE,
       textTransform: "none",
 

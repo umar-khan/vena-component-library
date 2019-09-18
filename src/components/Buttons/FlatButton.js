@@ -9,8 +9,7 @@ import {
   GRAY_50,
   RED_10,
   RED_50,
-  BLACK,
-  WHITE
+  BLACK
 } from "../../styles/colours";
 
 const styles = theme => {
