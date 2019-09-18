@@ -22,7 +22,8 @@ import {
 const webStyles = {
   root: {
     minHeight: "36px",
-    borderRadius: "6px"
+    borderRadius: "6px",
+    fontWeight: "bold"
   }
 };
 
@@ -42,7 +43,6 @@ const styles = theme => {
       paddingLeft: "16px",
       paddingRight: "16px",
       fontSize: "14px",
-      fontWeight: "bold",
       color: WHITE,
       textTransform: "none",
 
@@ -124,17 +124,18 @@ const styles = theme => {
     icon: {
       marginRight: "8px"
     },
-    buttonLabel: {
-      backgroundColor: "inherit" // We need this hear so that loadingIconContainer can inherit the button background color
+    loadingButtonLabel: {
+      visibility: "hidden"
     },
     loadingIconContainer: {
       position: "absolute",
+      left: "0",
       display: "flex",
       justifyContent: "center",
       alignItems: "center",
       width: "100%",
-      height: "24px",
-      backgroundColor: "inherit"
+      height: "calc(100% - 12px)",
+      visibility: "visible"
     }
   };
 };
@@ -174,7 +175,7 @@ function Button({
       classes={{
         root: classes.root,
         contained: colorClass,
-        label: classes.buttonLabel
+        label: isLoading ? classes.loadingButtonLabel : null
       }}
       variant="contained"
       disabled={disabled || isLoading}
@@ -182,12 +183,12 @@ function Button({
       {...rest}
     >
       {iconClass && <i className={iconClass + " " + classes.icon} />}
-      {children}
       {isLoading && (
         <div className={classes.loadingIconContainer}>
           <CircularProgress color="inherit" size={14} />
         </div>
       )}
+      {children}
     </MuiButton>
   );
 }
