@@ -27,7 +27,12 @@ const styles = theme => {
 
       "&:disabled": {
         cursor: "not-allowed",
-        pointerEvents: "auto"
+        pointerEvents: "auto",
+        color: GRAY_50
+      },
+
+      "&:disabled&:hover": {
+        color: GRAY_50
       }
     },
     primary: {
@@ -35,16 +40,6 @@ const styles = theme => {
 
       "&:hover": {
         backgroundColor: BLUE_10
-      },
-
-      "&:disabled": {
-        backgroundColor: WHITE,
-        color: GRAY_50
-      },
-
-      "&:disabled&:hover": {
-        backgroundColor: WHITE,
-        color: GRAY_50
       }
     },
     secondary: {
@@ -52,16 +47,6 @@ const styles = theme => {
 
       "&:hover": {
         backgroundColor: GRAY_50
-      },
-
-      "&:disabled": {
-        backgroundColor: WHITE,
-        color: GRAY_50
-      },
-
-      "&:disabled&:hover": {
-        backgroundColor: WHITE,
-        color: GRAY_50
       }
     },
     danger: {
@@ -69,33 +54,24 @@ const styles = theme => {
 
       "&:hover": {
         backgroundColor: RED_10
-      },
-
-      "&:disabled": {
-        backgroundColor: WHITE,
-        color: GRAY_50
-      },
-
-      "&:disabled&:hover": {
-        backgroundColor: WHITE,
-        color: GRAY_50
       }
     },
     icon: {
       marginRight: "8px"
     },
-    buttonLabel: {
-      backgroundColor: "inherit" // We need this hear so that loadingIconContainer can inherit the button background color
+    loadingButtonLabel: {
+      visibility: "hidden"
     },
     loadingIconContainer: {
       position: "absolute",
+      left: "0",
       display: "flex",
       justifyContent: "center",
       alignItems: "center",
       width: "100%",
-      height: "24px",
-      color: BLACK,
-      backgroundColor: "inherit"
+      height: "calc(100% - 12px)",
+      visibility: "visible",
+      color: BLACK
     }
   };
 };
@@ -122,9 +98,6 @@ function FlatButton({
     case "danger":
       colorClass = classes.danger;
       break;
-    case "stuff":
-      colorClass = "bb";
-      break;
     default:
       colorClass = classes.primary;
       break;
@@ -135,7 +108,7 @@ function FlatButton({
       classes={{
         root: classes.root,
         text: colorClass,
-        label: classes.buttonLabel
+        label: isLoading ? classes.loadingButtonLabel : null
       }}
       variant="text"
       disabled={disabled || isLoading}
@@ -143,12 +116,12 @@ function FlatButton({
       {...rest}
     >
       {iconClass && <i className={iconClass + " " + classes.icon} />}
-      {children}
       {isLoading && (
         <div className={classes.loadingIconContainer}>
           <CircularProgress color="inherit" size={14} />
         </div>
       )}
+      {children}
     </MuiButton>
   );
 }
