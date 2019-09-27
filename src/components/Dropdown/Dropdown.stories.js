@@ -29,11 +29,10 @@ const dropdownOptions = [
     value: "option2",
     menuListContent: (
       <>
-                
         <div style={{ display: "inline-block" }}>
           <DeleteIcon />
         </div>
-        <div>Delete this option</div>
+        <div>Delete this option</div>
       </>
     )
   },
@@ -41,7 +40,6 @@ const dropdownOptions = [
     value: "option3",
     menuListContent: (
       <>
-                
         <div style={{ display: "inline-block" }}>
           <ThreeSixtyIcon />
         </div>
@@ -53,8 +51,8 @@ const dropdownOptions = [
             paddingLeft: "5px"
           }}
         >
-                    This is a very very very long statment that is bigger than the
-                    dropdown menu         
+          This is a very very very long statment that is bigger than the
+          dropdown menu
         </div>
       </>
     )
@@ -73,7 +71,7 @@ class DropdownDemo extends React.Component {
   render() {
     return (
       <Dropdown
-        placeholder={"Select an option"}
+        placeholder={"Select an option"}
         options={dropdownOptions}
         value={this.state.value}
         onChange={this.onChange}
@@ -94,7 +92,7 @@ storiesOf("Dropdown", module)
       <div>
         <MuiThemeProvider theme={webTheme}>
           <div>
-            <h2>Standard Dropdown</h2>
+            <h2>Standard Dropdown</h2>
             <DropdownDemo />
           </div>
         </MuiThemeProvider>
@@ -105,9 +103,9 @@ storiesOf("Dropdown", module)
     <div>
       <MuiThemeProvider theme={webTheme}>
         <div>
-          <h2>Standard Dropdown</h2>
+          <h2>Standard Dropdown</h2>
           <Dropdown
-            placeholder={"Select an option"}
+            placeholder={"Select an option"}
             options={dropdownOptions}
             value={""}
             disabled
@@ -120,13 +118,13 @@ storiesOf("Dropdown", module)
     <div>
       <MuiThemeProvider theme={webTheme}>
         <div>
-          <h2>Standard Dropdown</h2>
+          <h2>Standard Dropdown</h2>
           <Dropdown
-            placeholder={"Select an option"}
+            placeholder={"Select an option"}
             options={dropdownOptions}
             value={""}
             error
-            helperText={"This is an error"}
+            helperText={"This is an error"}
           />
         </div>
       </MuiThemeProvider>

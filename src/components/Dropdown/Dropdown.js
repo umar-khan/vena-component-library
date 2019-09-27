@@ -26,18 +26,18 @@ const styles = theme => {
       display: "flex",
       alignItems: "center",
       justifyContent: "left",
-      padding: "3px 5px",
+      padding: "3px 5px",
       fontSize: 14
     },
     paper: {
-      top: "148 !important",
-      left: "9 !important",
-      boxShadow: "0px 1px 1px " + GRAY_50 + ", 0px 1px 1px " + GRAY_50,
+      top: "148px !important",
+      left: "9px !important",
+      boxShadow: "0px 1px 1px " + GRAY_50 + ", 0px 1px 1px " + GRAY_50,
       borderRadius: 0
     },
     select: {
-      border: "solid 1px " + GRAY_50,
-      padding: "2px 20px 2px 8px",
+      border: "solid 1px" + GRAY_50,
+      padding: "2px 20px 2px 8px",
       fontSize: "14px",
       height: "32px",
       display: "flex",
@@ -45,10 +45,10 @@ const styles = theme => {
       alignItems: "center",
       "&:focus": {
         background: WHITE,
-        border: "solid 1px " + BLUE_50
+        border: "solid 1px " + BLUE_50
       },
       "&:hover": {
-        border: "solid 1px " + GRAY_90
+        border: "solid 1px " + GRAY_90
       }
     },
     listContainer: {
@@ -76,8 +76,8 @@ const styles = theme => {
       }
     },
     errorSelect: {
-      border: "solid 1px " + RED_50,
-      padding: "2px 20px 2px 8px",
+      border: "solid 1px" + RED_50,
+      padding: "2px 20px 2px 8px",
       fontSize: "14px",
       height: "28px",
       display: "flex",
@@ -89,7 +89,25 @@ const styles = theme => {
     },
     helperText: {
       fontStyle: "italic"
-    }
+    },
+    labelRoot: {
+      color: BLACK,
+      fontSize: "14px",
+      transform: "scale(1)",
+
+      "&$labelDisabled": {
+        color: BLACK
+      },
+      "&$labelError": {
+        color: BLACK
+      },
+      "&$labelFocused": {
+        color: BLACK
+      }
+    },
+    labelDisabled: {},
+    labelError: {},
+    labelFocused: {}
   };
 };
 
@@ -121,7 +139,7 @@ function Dropdown({
       <TextField
         id="standard-select-currency"
         select
-        label="Select Operation"
+        label="Select Operation"
         className={classes.textField}
         disabled={disabled}
         value={value ? value : dropdownOptions[0].value}
@@ -164,7 +182,6 @@ function Dropdown({
         helperText={helperText}
         margin="normal"
       >
-                
         {dropdownOptions.map(option => (
           <MenuItem
             disableGutters
@@ -172,7 +189,7 @@ function Dropdown({
             key={option.value}
             value={option.value}
           >
-                        {option.menuListContent}       
+            {option.menuListContent}
           </MenuItem>
         ))}
       </TextField>
@@ -184,32 +201,31 @@ Dropdown.defaultProps = {
   value: "",
   disabled: false,
   required: false,
-  helperText: "Some important text"
+  helperText: "Some important text"
 };
 
 Dropdown.propTypes = {
-  /**@ignore*/
-  /**Sets the background and text colours.*/
+  /** @ignore */
+  /** Sets the background and text colours. */
   classes: PropTypes.object.isRequired,
-  /** Sets the selected option of the dropdown*/
+  /** Sets the selected option of the dropdown*/
   value: PropTypes.node,
-  /** Disables the dropdown*/
+  /** Disables the dropdown*/
   disabled: PropTypes.bool,
-  /** Adds an asterisk beside label */
+  /** Adds an asterisk beside label */
   required: PropTypes.bool,
-  /** Sets the helper text */
+  /** Sets the helper text */
   helperText: PropTypes.string,
-  /** These are the options to be displayed in the dropdown.
-   * They are an array of objects, each object contains a value
-   * and a menuListContent property
-   **/
-
+  /** These are the options to be displayed in the dropdown.
+   * They are an array of objects, each object contains a value
+   * and a menuListContent property
+   * */
   options: PropTypes.array.isRequired,
-  /** Sets the placeholder inside the dropdown */
+  /** Sets the placeholder inside the dropdown */
   placeholder: PropTypes.string,
-  /** Callback for when the options in the dropdown are changed */
+  /** Callback for when the options in the dropdown are changed */
   onChange: PropTypes.func,
-  /** Passed as true or false depending on whether the error state needs to be shown */
+  /** Passed as true or false depending on whether the error state needs to be shown */
   error: PropTypes.bool
 };
 
