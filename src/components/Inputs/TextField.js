@@ -179,7 +179,7 @@ TextField.propTypes = {
    * function(event: object) => void
    * You can pull out the new value by accessing event.target.value
    */
-  onChange: PropTypes.node,
+  onChange: PropTypes.func,
   /** The short hint displayed in the input before the user enters a value. */
   placeholder: PropTypes.string,
   /** It prevents the user from changing the value of the field (not from interacting with the field). */
@@ -187,7 +187,7 @@ TextField.propTypes = {
   /** If true, the label is displayed as required and the input will be required. */
   required: PropTypes.bool,
   /** The value of the input element. */
-  value: PropTypes.bool
+  value: PropTypes.any
 };
 
 export const TextFieldComponent = TextField;

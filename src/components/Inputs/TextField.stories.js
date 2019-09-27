@@ -15,7 +15,7 @@ const webTheme = createMuiTheme({
 
 class TextFieldDemo extends React.Component {
   state = {
-    value: null
+    value: ""
   };
 
   handleChange = event => {
