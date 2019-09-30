@@ -71,6 +71,9 @@ class DropdownDemo extends React.Component {
   render() {
     return (
       <Dropdown
+        id={"dropdown_id"}
+        label={"Select Operation"}
+        helperText={"Some important text"}
         placeholder={"Select an option"}
         options={dropdownOptions}
         value={this.state.value}
@@ -121,6 +124,7 @@ storiesOf("Dropdown", module)
           <h2>Standard Dropdown</h2>
           <Dropdown
             placeholder={"Select an option"}
+            label={"Select Operation"}
             options={dropdownOptions}
             value={""}
             error

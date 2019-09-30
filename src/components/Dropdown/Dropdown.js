@@ -20,19 +20,19 @@ const styles = theme => {
       flexWrap: "wrap"
     },
     textField: {
-      width: 300
+      width: "320px"
     },
     listItem: {
       display: "flex",
       alignItems: "center",
       justifyContent: "left",
       padding: "3px 5px",
-      fontSize: 14
+      fontSize: "14px"
     },
     paper: {
       top: "148px !important",
       left: "9px !important",
-      boxShadow: "0px 1px 1px " + GRAY_50 + ", 0px 1px 1px " + GRAY_50,
+      boxShadow: `0px 1px 1px ${GRAY_50}`,
       borderRadius: 0
     },
     select: {
@@ -53,13 +53,13 @@ const styles = theme => {
     },
     listContainer: {
       padding: 0,
-      width: 300
+      width: "320px"
     },
     inputOnFocus: {
-      marginTop: 8
+      marginTop: "8px"
     },
     inputLabel: {
-      fontSize: 18,
+      fontSize: "18px",
       color: BLACK
     },
     placeholder: {
@@ -67,7 +67,7 @@ const styles = theme => {
     },
     disabledSelect: {
       background: GRAY_30,
-      border: 0,
+      border: `1px solid ${GRAY_50}`,
       "&:hover": {
         border: 0
       },
@@ -79,7 +79,7 @@ const styles = theme => {
       border: "solid 1px" + RED_50,
       padding: "2px 20px 2px 8px",
       fontSize: "14px",
-      height: "28px",
+      height: "32px",
       display: "flex",
       justifyContent: "left",
       alignItems: "center",
@@ -120,7 +120,9 @@ function Dropdown({
   onChange,
   disabled,
   error,
-  required
+  required,
+  id,
+  label
 }) {
   let dropdownOptions = options;
   if (placeholder) {
@@ -135,73 +137,69 @@ function Dropdown({
     ];
   }
   return (
-    <form className={classes.container} noValidate autoComplete="off">
-      <TextField
-        id="standard-select-currency"
-        select
-        label="Select Operation"
-        className={classes.textField}
-        disabled={disabled}
-        value={value ? value : dropdownOptions[0].value}
-        disableUnderline={true}
-        onChange={onChange}
-        FormHelperTextProps={{
-          error: error ? true : false,
-          classes: {
-            root: classes.helperText
+    <TextField
+      id={id}
+      select
+      label={label}
+      className={classes.textField}
+      disabled={disabled}
+      error={error}
+      value={value ? value : dropdownOptions[0].value}
+      onChange={onChange}
+      FormHelperTextProps={{
+        classes: {
+          root: classes.helperText
+        }
+      }}
+      InputProps={{
+        disableUnderline: true
+      }}
+      InputLabelProps={{
+        shrink: true,
+        classes: { root: classes.inputLabel },
+        FormLabelClasses: {
+          root: classes.labelRoot,
+          disabled: classes.labelDisabled,
+          error: classes.labelError,
+          focused: classes.labelFocused
+        },
+        required: required
+      }}
+      SelectProps={{
+        classes: {
+          root: classes.inputOnFocus,
+          select: error ? classes.errorSelect : classes.select,
+          disabled: classes.disabledSelect
+        },
+        MenuProps: {
+          className: classes.menu,
+          classes: { paper: classes.paper },
+          MenuListProps: {
+            className: classes.listContainer
           }
-        }}
-        InputProps={{
-          disableUnderline: true
-        }}
-        InputLabelProps={{
-          shrink: true,
-          className: classes.inputLabel,
-          FormLabelClasses: {
-            root: classes.labelRoot,
-            disabled: classes.labelDisabled,
-            error: classes.labelError,
-            focused: classes.labelFocused
-          },
-          required: required
-        }}
-        SelectProps={{
-          classes: {
-            root: classes.inputOnFocus,
-            select: error ? classes.errorSelect : classes.select,
-            disabled: classes.disabledSelect
-          },
-          MenuProps: {
-            className: classes.menu,
-            classes: { paper: classes.paper },
-            MenuListProps: {
-              className: classes.listContainer
-            }
-          }
-        }}
-        helperText={helperText}
-        margin="normal"
-      >
-        {dropdownOptions.map(option => (
-          <MenuItem
-            disableGutters
-            classes={{ root: classes.listItem }}
-            key={option.value}
-            value={option.value}
-          >
-            {option.menuListContent}
-          </MenuItem>
-        ))}
-      </TextField>
-    </form>
+        }
+      }}
+      helperText={helperText}
+      margin="normal"
+    >
+      {dropdownOptions.map(option => (
+        <MenuItem
+          disableGutters
+          classes={{ root: classes.listItem }}
+          key={option.value}
+          value={option.value}
+        >
+          {option.menuListContent}
+        </MenuItem>
+      ))}
+    </TextField>
   );
 }
 
 Dropdown.defaultProps = {
   value: "",
   disabled: false,
-  required: false,
-  helperText: "Some important text"
+  required: false
 };
 
 Dropdown.propTypes = {
@@ -209,13 +207,13 @@ Dropdown.propTypes = {
   /** Sets the background and text colours. */
   classes: PropTypes.object.isRequired,
   /** Sets the selected option of the dropdown*/
-  value: PropTypes.node,
+  value: PropTypes.any,
   /** Disables the dropdown*/
   disabled: PropTypes.bool,
   /** Adds an asterisk beside label */
   required: PropTypes.bool,
   /** Sets the helper text */
-  helperText: PropTypes.string,
+  helperText: PropTypes.node,
   /** These are the options to be displayed in the dropdown.
    * They are an array of objects, each object contains a value
    * and a menuListContent property
@@ -226,7 +224,11 @@ Dropdown.propTypes = {
   /** Callback for when the options in the dropdown are changed */
   onChange: PropTypes.func,
   /** Passed as true or false depending on whether the error state needs to be shown */
-  error: PropTypes.bool
+  error: PropTypes.bool,
+  /** Id of the dropdown  */
+  id: PropTypes.string,
+  /** Label of the dropdown if any  */
+  label: PropTypes.string
 };
 
 export const DropdownComponent = Dropdown;
