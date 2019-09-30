@@ -94,6 +94,7 @@ function TextField({
   classes,
   disabled,
   endAdornment,
+  error,
   fullWidth,
   helperText,
   id,
@@ -108,6 +109,7 @@ function TextField({
   return (
     <MuiTextField
       disabled={disabled}
+      error={error}
       fullWidth={fullWidth}
       helperText={helperText}
       id={id}
@@ -158,6 +160,7 @@ function TextField({
 
 TextField.defaultProps = {
   disabled: false,
+  error: false,
   readOnly: false,
   required: false
 };
@@ -167,6 +170,10 @@ TextField.propTypes = {
   classes: PropTypes.object.isRequired,
   /** If true, the input will be disabled. */
   disabled: PropTypes.bool,
+  /** If true, the field will be displayed in an error state */
+  error: PropTypes.bool,
+  /**  End InputAdornment for this component */
+  endAdornment: PropTypes.node,
   /** If true, the input will take up the full width of its container. */
   fullWidth: PropTypes.bool,
   /** The helper text content. */
