@@ -32,7 +32,6 @@ const styles = theme => {
       display: "flex",
       justifyContent: "flex-start",
       alignItems: "center",
-      padding: "0 20px 0 0",
       "&:focus": {
         background: WHITE
       }
@@ -48,11 +47,8 @@ const styles = theme => {
     placeholder: {
       color: GRAY_90
     },
-    textField: {
-      width: 280
-    },
     inputInput: {
-      padding: "1px 0 0 0"
+      padding: "1px 20px 0 0"
     },
     inputRoot: {
       width: "320px",
@@ -145,7 +141,6 @@ function Select({
       error={error}
       value={value ? value : dropdownOptions[0].value}
       onChange={onChange}
-      className={classes.textField}
       FormHelperTextProps={{
         classes: {
           root: classes.helperText
