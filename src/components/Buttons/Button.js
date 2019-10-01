@@ -129,6 +129,7 @@ const styles = theme => {
     },
     loadingIconContainer: {
       position: "absolute",
+      top: "6px",
       left: "0",
       display: "flex",
       justifyContent: "center",
