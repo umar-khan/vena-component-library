@@ -18,7 +18,7 @@ const styles = theme => {
     listItem: {
       display: "flex",
       alignItems: "center",
-      justifyContent: "left",
+      justifyContent: "flex-start",
       padding: "3px 5px",
       fontSize: "14px"
     },
@@ -30,7 +30,7 @@ const styles = theme => {
     },
     select: {
       display: "flex",
-      justifyContent: "left",
+      justifyContent: "flex-start",
       alignItems: "center",
       padding: "0 20px 0 0",
       "&:focus": {
@@ -111,7 +111,7 @@ const styles = theme => {
   };
 };
 
-function Dropdown({
+function Select({
   classes,
   placeholder,
   options,
@@ -204,14 +204,14 @@ function Dropdown({
   );
 }
 
-Dropdown.defaultProps = {
+Select.defaultProps = {
   value: "",
   disabled: false,
   required: false,
   error: false
 };
 
-Dropdown.propTypes = {
+Select.propTypes = {
   /** @ignore */
   classes: PropTypes.object.isRequired,
   /** Sets the selected option of the dropdown*/
@@ -239,5 +239,5 @@ Dropdown.propTypes = {
   label: PropTypes.string
 };
 
-export const DropdownComponent = Dropdown;
-export default withStyles(styles)(Dropdown);
+export const SelectComponent = Select;
+export default withStyles(styles)(Select);

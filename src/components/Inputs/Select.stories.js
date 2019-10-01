@@ -6,7 +6,7 @@ import { createMuiTheme, MuiThemeProvider } from "@material-ui/core/styles";
 import DeleteIcon from "@material-ui/icons/Delete";
 import ThreeSixtyIcon from "@material-ui/icons/ThreeSixty";
 
-import Dropdown, { DropdownComponent } from "./Dropdown";
+import Select, { SelectComponent } from "./Select";
 
 export const actions = {
   onClick: action("onClick")
@@ -58,7 +58,7 @@ const dropdownOptions = [
   }
 ];
 
-class DropdownDemo extends React.Component {
+class SelectDemo extends React.Component {
   state = {
     value: ""
   };
@@ -69,7 +69,7 @@ class DropdownDemo extends React.Component {
 
   render() {
     return (
-      <Dropdown
+      <Select
         id={"dropdown_id"}
         label={"Select Operation"}
         helperText={"Some important text"}
@@ -83,19 +83,19 @@ class DropdownDemo extends React.Component {
   }
 }
 
-storiesOf("Dropdown", module)
+storiesOf("Select", module)
   .add(
     "Default",
     withInfo({
       source: false,
-      propTables: [DropdownComponent],
-      propTablesExclude: [Dropdown, DropdownDemo, MuiThemeProvider]
+      propTables: [SelectComponent],
+      propTablesExclude: [Select, SelectDemo, MuiThemeProvider]
     })(() => (
       <div>
         <MuiThemeProvider theme={addinTheme}>
           <div>
-            <h2>Standard Dropdown</h2>
-            <DropdownDemo />
+            <h2>Standard Select</h2>
+            <SelectDemo />
           </div>
         </MuiThemeProvider>
       </div>
@@ -105,8 +105,8 @@ storiesOf("Dropdown", module)
     <div>
       <MuiThemeProvider theme={addinTheme}>
         <div>
-          <h2>Disabled Dropdown</h2>
-          <Dropdown
+          <h2>Disabled Select</h2>
+          <Select
             placeholder={"Select an option"}
             label={"Select Operation"}
             options={dropdownOptions}
@@ -121,8 +121,8 @@ storiesOf("Dropdown", module)
     <div>
       <MuiThemeProvider theme={addinTheme}>
         <div>
-          <h2>Error Dropdown</h2>
-          <Dropdown
+          <h2>Error Select</h2>
+          <Select
             placeholder={"Select an option"}
             label={"Select Operation"}
             options={dropdownOptions}
