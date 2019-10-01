@@ -51,8 +51,7 @@ const dropdownOptions = [
             paddingLeft: "5px"
           }}
         >
-          This is a very very very long statment that is bigger than the
-          dropdown menu
+          This is a very long statment that is bigger than the dropdown menu
         </div>
       </>
     )
@@ -90,10 +89,10 @@ storiesOf("Dropdown", module)
     withInfo({
       source: false,
       propTables: [DropdownComponent],
-      propTablesExclude: [Dropdown]
+      propTablesExclude: [Dropdown, DropdownDemo, MuiThemeProvider]
     })(() => (
       <div>
-        <MuiThemeProvider theme={webTheme}>
+        <MuiThemeProvider theme={addinTheme}>
           <div>
             <h2>Standard Dropdown</h2>
             <DropdownDemo />
@@ -104,11 +103,12 @@ storiesOf("Dropdown", module)
   )
   .add("Disabled", () => (
     <div>
-      <MuiThemeProvider theme={webTheme}>
+      <MuiThemeProvider theme={addinTheme}>
         <div>
-          <h2>Standard Dropdown</h2>
+          <h2>Disabled Dropdown</h2>
           <Dropdown
             placeholder={"Select an option"}
+            label={"Select Operation"}
             options={dropdownOptions}
             value={""}
             disabled
@@ -119,9 +119,9 @@ storiesOf("Dropdown", module)
   ))
   .add("Error", () => (
     <div>
-      <MuiThemeProvider theme={webTheme}>
+      <MuiThemeProvider theme={addinTheme}>
         <div>
-          <h2>Standard Dropdown</h2>
+          <h2>Error Dropdown</h2>
           <Dropdown
             placeholder={"Select an option"}
             label={"Select Operation"}

@@ -15,13 +15,6 @@ import {
 
 const styles = theme => {
   return {
-    container: {
-      display: "flex",
-      flexWrap: "wrap"
-    },
-    textField: {
-      width: "320px"
-    },
     listItem: {
       display: "flex",
       alignItems: "center",
@@ -30,33 +23,24 @@ const styles = theme => {
       fontSize: "14px"
     },
     paper: {
-      top: "148px !important",
+      top: "146px !important",
       left: "9px !important",
       boxShadow: `0px 1px 1px ${GRAY_50}`,
       borderRadius: 0
     },
     select: {
-      border: "solid 1px" + GRAY_50,
-      padding: "2px 20px 2px 8px",
-      fontSize: "14px",
-      height: "32px",
       display: "flex",
       justifyContent: "left",
       alignItems: "center",
+      padding: 0,
+      width: "275px",
       "&:focus": {
-        background: WHITE,
-        border: "solid 1px " + BLUE_50
-      },
-      "&:hover": {
-        border: "solid 1px " + GRAY_90
+        background: WHITE
       }
     },
     listContainer: {
       padding: 0,
       width: "320px"
-    },
-    inputOnFocus: {
-      marginTop: "8px"
     },
     inputLabel: {
       fontSize: "18px",
@@ -65,28 +49,39 @@ const styles = theme => {
     placeholder: {
       color: GRAY_90
     },
-    disabledSelect: {
-      background: GRAY_30,
+    inputRoot: {
+      width: "320px",
+      backgroundColor: WHITE,
       border: `1px solid ${GRAY_50}`,
-      "&:hover": {
-        border: 0
-      },
-      "&:focus": {
-        background: WHITE
-      }
-    },
-    errorSelect: {
-      border: "solid 1px" + RED_50,
-      padding: "2px 20px 2px 8px",
+      boxSizing: "border-box",
+      color: BLACK,
       fontSize: "14px",
       height: "32px",
-      display: "flex",
-      justifyContent: "left",
-      alignItems: "center",
-      "&:focus": {
-        background: WHITE
+      marginTop: "24px",
+      paddingLeft: "8px",
+      paddingRight: "8px",
+
+      "&$inputFormControl": {
+        marginTop: "24px"
+      },
+      "&:hover": {
+        border: `1px solid ${GRAY_90}`
+      },
+      "&$inputDisabled": {
+        border: `1px solid ${GRAY_50}`,
+        backgroundColor: GRAY_30
+      },
+      "&$inputError": {
+        border: `1px solid ${RED_50}`
+      },
+      "&$inputFocused": {
+        border: `1px solid ${BLUE_50}`
       }
     },
+    inputDisabled: {},
+    inputError: {},
+    inputFormControl: {},
+    inputFocused: {},
     helperText: {
       fontStyle: "italic"
     },
@@ -141,7 +136,6 @@ function Dropdown({
       id={id}
       select
       label={label}
-      className={classes.textField}
       disabled={disabled}
       error={error}
       value={value ? value : dropdownOptions[0].value}
@@ -152,11 +146,21 @@ function Dropdown({
         }
       }}
       InputProps={{
-        disableUnderline: true
+        disableUnderline: true,
+        classes: {
+          root: classes.inputRoot,
+          input: classes.inputInput,
+          disabled: classes.inputDisabled,
+          error: classes.inputError,
+          formControl: classes.inputFormControl,
+          focused: classes.inputFocused
+        }
       }}
       InputLabelProps={{
         shrink: true,
-        classes: { root: classes.inputLabel },
+        classes: {
+          root: classes.inputLabel
+        },
         FormLabelClasses: {
           root: classes.labelRoot,
           disabled: classes.labelDisabled,
@@ -167,9 +171,7 @@ function Dropdown({
       }}
       SelectProps={{
         classes: {
-          root: classes.inputOnFocus,
-          select: error ? classes.errorSelect : classes.select,
-          disabled: classes.disabledSelect
+          select: classes.select
         },
         MenuProps: {
           className: classes.menu,
@@ -199,12 +201,12 @@ function Dropdown({
 Dropdown.defaultProps = {
   value: "",
   disabled: false,
-  required: false
+  required: false,
+  error: false
 };
 
 Dropdown.propTypes = {
   /** @ignore */
-  /** Sets the background and text colours. */
   classes: PropTypes.object.isRequired,
   /** Sets the selected option of the dropdown*/
   value: PropTypes.any,
