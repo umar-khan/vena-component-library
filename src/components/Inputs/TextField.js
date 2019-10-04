@@ -16,11 +16,10 @@ import {
 const styles = theme => {
   return {
     formControlRoot: {
-      minWidth: "320px",
-      margin: "16px 0 8px 0",
+      width: "320px",
 
       "&$formControlFullWidth": {
-        minWidth: "0"
+        width: "100%"
       }
     },
     formControlFullWidth: {},
@@ -44,12 +43,11 @@ const styles = theme => {
       color: BLACK,
       fontSize: "14px",
       height: "32px",
-      marginTop: "24px",
       paddingLeft: "8px",
       paddingRight: "8px",
 
-      "&$inputFormControl": {
-        marginTop: "24px"
+      "$labelRoot + &": {
+        marginTop: "8px"
       },
       "&:hover": {
         border: `1px solid ${GRAY_90}`
@@ -72,7 +70,9 @@ const styles = theme => {
     labelRoot: {
       color: BLACK,
       fontSize: "14px",
-      transform: "scale(1)",
+      transform: "none",
+      transition: "none",
+      position: "static",
 
       "&$labelDisabled": {
         color: BLACK
