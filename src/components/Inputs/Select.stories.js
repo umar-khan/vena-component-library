@@ -1,12 +1,12 @@
 import React from "react";
 import { storiesOf } from "@storybook/react";
-import { action } from "@storybook/addon-actions";
 import { withInfo } from "@storybook/addon-info";
 import {
   createMuiTheme,
   MuiThemeProvider,
   withStyles
 } from "@material-ui/core/styles";
+import DeleteIcon from "@material-ui/icons/Delete";
 
 import Select, { SelectComponent } from "./Select";
 
@@ -58,6 +58,38 @@ const longDropDownOptions = [
   {
     value: "option3",
     menuListContent: "Third Option that is longer than the standward width"
+  }
+];
+
+const jsxOptions = [
+  {
+    value: "option1",
+    menuListContent: (
+      <div style={{ display: "flex", alignItems: "center" }}>
+        <DeleteIcon />
+        First
+      </div>
+    )
+  },
+  {
+    value: "option2",
+    menuListContent: (
+      <div style={{ display: "flex", alignItems: "center" }}>
+        <DeleteIcon />
+        <div style={{ textOverflow: "ellipsis", overflow: "hidden" }}>
+          Second option that is really long and expands past the outside
+        </div>
+      </div>
+    )
+  },
+  {
+    value: "option3",
+    menuListContent: (
+      <div style={{ display: "flex", alignItems: "center" }}>
+        <DeleteIcon />
+        Third
+      </div>
+    )
   }
 ];
 
@@ -167,6 +199,16 @@ class SelectDemo extends React.Component {
           onChange={this.onChange}
           helperText={"Some important text"}
           fullWidth
+        />
+
+        <Select
+          id={"dropdown-full-jsx"}
+          label={"JSX Options"}
+          className={classes.selectField}
+          options={jsxOptions}
+          value={this.state.value}
+          onChange={this.onChange}
+          helperText={"Some important text"}
         />
       </>
     );
