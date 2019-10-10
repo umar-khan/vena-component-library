@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import { withStyles } from "@material-ui/core/styles";
 import MenuItem from "@material-ui/core/MenuItem";
-import TextField from "@material-ui/core/TextField";
+import MuiTextField from "@material-ui/core/TextField";
 import {
   BLUE_50,
   GRAY_50,
@@ -16,54 +16,49 @@ import {
 const styles = theme => {
   return {
     listItem: {
+      padding: "0 8px 0 8px",
+      minHeight: "32px",
       display: "flex",
       alignItems: "center",
-      justifyContent: "flex-start",
-      padding: "3px 5px",
       fontSize: "14px"
     },
+    listPadding: {
+      padding: 0
+    },
     paper: {
-      top: "146px !important",
-      left: "9px !important",
-      boxShadow: `0px 1px 1px ${GRAY_50}`,
+      boxShadow: `0 0 0 1px ${GRAY_50}`,
       borderRadius: 0
     },
-    select: {
-      display: "flex",
-      justifyContent: "flex-start",
-      alignItems: "center",
+    selectSelect: {
+      height: "30px",
+      padding: "0 32px 0 8px",
+      lineHeight: "30px",
+
       "&:focus": {
         background: WHITE
       }
     },
-    listContainer: {
-      padding: 0,
-      width: "320px"
-    },
-    inputLabel: {
-      fontSize: "18px",
-      color: BLACK
-    },
     placeholder: {
       color: GRAY_90
     },
-    inputInput: {
-      padding: "1px 20px 0 0"
-    },
-    inputRoot: {
+    formControlRoot: {
       width: "320px",
+
+      "&$formControlFullWidth": {
+        width: "100%"
+      }
+    },
+    formControlFullWidth: {},
+    inputRoot: {
       backgroundColor: WHITE,
       border: `1px solid ${GRAY_50}`,
       boxSizing: "border-box",
       color: BLACK,
       fontSize: "14px",
       height: "32px",
-      marginTop: "24px",
-      paddingLeft: "8px",
-      paddingRight: "8px",
 
-      "&$inputFormControl": {
-        marginTop: "24px"
+      "$labelRoot + &": {
+        marginTop: "8px"
       },
       "&:hover": {
         border: `1px solid ${GRAY_90}`
@@ -83,13 +78,22 @@ const styles = theme => {
     inputError: {},
     inputFormControl: {},
     inputFocused: {},
-    helperText: {
-      fontStyle: "italic"
+    helperTextRoot: {
+      color: GRAY_90,
+      fontSize: "12px",
+      fontStyle: "italic",
+
+      "&$helperTextError": {
+        color: RED_50
+      }
     },
+    helperTextError: {},
     labelRoot: {
       color: BLACK,
       fontSize: "14px",
-      transform: "scale(1)",
+      transform: "none",
+      transition: "none",
+      position: "static",
 
       "&$labelDisabled": {
         color: BLACK
@@ -116,15 +120,17 @@ function Select({
   onChange,
   disabled,
   error,
+  fullWidth,
   required,
   id,
-  label
+  label,
+  ...rest
 }) {
   let dropdownOptions = options;
   if (placeholder) {
     dropdownOptions = [
       {
-        value: placeholder,
+        value: "",
         menuListContent: (
           <div className={classes.placeholder}>{placeholder}</div>
         )
@@ -133,9 +139,10 @@ function Select({
     ];
   }
   return (
-    <TextField
+    <MuiTextField
       id={id}
       select
+      fullWidth={fullWidth}
       label={label}
       disabled={disabled}
       error={error}
@@ -143,14 +150,18 @@ function Select({
       onChange={onChange}
       FormHelperTextProps={{
         classes: {
-          root: classes.helperText
+          root: classes.helperTextRoot,
+          error: classes.helperTextError
         }
+      }}
+      classes={{
+        root: classes.formControlRoot,
+        fullWidth: classes.formControlFullWidth
       }}
       InputProps={{
         disableUnderline: true,
         classes: {
           root: classes.inputRoot,
-          input: classes.inputInput,
           disabled: classes.inputDisabled,
           error: classes.inputError,
           formControl: classes.inputFormControl,
@@ -159,9 +170,6 @@ function Select({
       }}
       InputLabelProps={{
         shrink: true,
-        classes: {
-          root: classes.inputLabel
-        },
         FormLabelClasses: {
           root: classes.labelRoot,
           disabled: classes.labelDisabled,
@@ -172,18 +180,28 @@ function Select({
       }}
       SelectProps={{
         classes: {
-          select: classes.select
+          select: classes.selectSelect
         },
+        displayEmpty: true,
         MenuProps: {
-          className: classes.menu,
           classes: { paper: classes.paper },
           MenuListProps: {
-            className: classes.listContainer
-          }
+            classes: { padding: classes.listPadding }
+          },
+          anchorOrigin: {
+            vertical: "bottom",
+            horizontal: "left"
+          },
+          transformOrigin: {
+            vertical: "top",
+            horizontal: "left"
+          },
+          getContentAnchorEl: null,
+          marginThreshold: 0
         }
       }}
       helperText={helperText}
-      margin="normal"
+      {...rest}
     >
       {dropdownOptions.map(option => (
         <MenuItem
@@ -195,7 +213,7 @@ function Select({
           {option.menuListContent}
         </MenuItem>
       ))}
-    </TextField>
+    </MuiTextField>
   );
 }
 
@@ -215,6 +233,8 @@ Select.propTypes = {
   disabled: PropTypes.bool,
   /** Adds an asterisk beside label */
   required: PropTypes.bool,
+  /** If true, the input will take up the full width of its container. */
+  fullWidth: PropTypes.bool,
   /** Sets the helper text */
   helperText: PropTypes.node,
   /** These are the options to be displayed in the dropdown.
