@@ -1,7 +1,11 @@
 import React from "react";
 import { storiesOf } from "@storybook/react";
 import { withInfo } from "@storybook/addon-info";
-import { createMuiTheme, MuiThemeProvider } from "@material-ui/core/styles";
+import {
+  createMuiTheme,
+  MuiThemeProvider,
+  withStyles
+} from "@material-ui/core/styles";
 
 import TextField, { TextFieldComponent } from "./TextField";
 
@@ -11,6 +15,19 @@ const addinTheme = createMuiTheme({
 
 const webTheme = createMuiTheme({
   venaTheme: "web"
+});
+
+const styles = theme => ({
+  textField: {
+    margin: "16px 10px 8px 0"
+  },
+  customWidth: {
+    margin: "16px 10px 8px 0",
+    width: "400px"
+  },
+  fullWidthField: {
+    margin: "16px 0 8px 0"
+  }
 });
 
 class TextFieldDemo extends React.Component {
@@ -23,15 +40,17 @@ class TextFieldDemo extends React.Component {
   };
 
   render() {
+    const { classes } = this.props;
+
     return (
       <div>
         <h2>TextField (Addin)</h2>
-        <TextField label="First Name" style={{ marginRight: "10px" }} />
+        <TextField label="First Name" className={classes.textField} />
 
         <TextField
           label="Required"
           required={true}
-          style={{ marginRight: "10px" }}
+          className={classes.textField}
         />
 
         <TextField
@@ -39,13 +58,13 @@ class TextFieldDemo extends React.Component {
           helperText="Some important text"
           value={this.state.value}
           onChange={this.handleChange}
-          style={{ marginRight: "10px" }}
+          className={classes.textField}
         />
 
         <TextField
           label="Helper Text"
           helperText="Some important text"
-          style={{ marginRight: "10px" }}
+          className={classes.textField}
         />
 
         <TextField
@@ -53,7 +72,7 @@ class TextFieldDemo extends React.Component {
           value="Input Value"
           disabled={true}
           helperText="Some important text"
-          style={{ marginRight: "10px" }}
+          className={classes.textField}
         />
 
         <TextField
@@ -61,45 +80,46 @@ class TextFieldDemo extends React.Component {
           value="Input Value"
           readOnly={true}
           helperText="Some important text"
-          style={{ marginRight: "10px" }}
+          className={classes.textField}
         />
 
         <TextField
           label="With Placeholder"
           placeholder="Placeholder"
           helperText="Some important text"
-          style={{ marginRight: "10px" }}
+          className={classes.textField}
         />
 
         <TextField
           label="Error"
-          style={{ marginRight: "10px" }}
+          className={classes.textField}
           helperText="Some important text"
           error={true}
         />
 
         <TextField
           label="Number"
-          style={{ marginRight: "10px" }}
+          className={classes.textField}
           type="number"
           helperText="Some important text"
         />
 
         <TextField
           label="With End Adornment"
-          style={{ marginRight: "10px" }}
+          className={classes.textField}
           endAdornment={".xlsx"}
           helperText=""
         />
 
         <TextField
           label="Custom Width"
-          style={{ minWidth: "0", width: "400px" }}
+          className={classes.customWidth}
           helperText="Some important text"
         />
 
         <TextField
           label="Full Width"
+          className={classes.fullWidthField}
           fullWidth={true}
           helperText="Some important text"
         />
@@ -107,6 +127,8 @@ class TextFieldDemo extends React.Component {
     );
   }
 }
+
+const StyledDemo = withStyles(styles)(TextFieldDemo);
 
 storiesOf("TextField", module).add(
   "Default",
@@ -117,7 +139,7 @@ storiesOf("TextField", module).add(
   })(() => (
     <div>
       <MuiThemeProvider theme={addinTheme}>
-        <TextFieldDemo />
+        <StyledDemo />
       </MuiThemeProvider>
     </div>
   ))
