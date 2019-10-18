@@ -17,7 +17,7 @@ import {
   RED_70,
   BLACK,
   WHITE
-} from "../../styles/colours";
+} from "../../styles/colors";
 
 const webStyles = {
   root: {
@@ -204,7 +204,7 @@ Button.defaultProps = {
 Button.propTypes = {
   /** @ignore */
   classes: PropTypes.object.isRequired,
-  /** Sets the background and text colours. */
+  /** Sets the background and text colors. */
   color: PropTypes.oneOf(["primary", "secondary", "confirmation", "danger"]),
   /** Disables button including all pointer events. */
   disabled: PropTypes.bool,

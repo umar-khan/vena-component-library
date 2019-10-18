@@ -10,7 +10,7 @@ import {
   RED_10,
   RED_50,
   BLACK
-} from "../../styles/colours";
+} from "../../styles/colors";
 
 const styles = theme => {
   return {
@@ -136,7 +136,7 @@ FlatButton.defaultProps = {
 FlatButton.propTypes = {
   /** @ignore */
   classes: PropTypes.object.isRequired,
-  /** Sets the background and text colours. */
+  /** Sets the background and text colors. */
   color: PropTypes.oneOf(["primary", "secondary", "danger"]),
   /** Disables button including all pointer events. */
   disabled: PropTypes.bool,
