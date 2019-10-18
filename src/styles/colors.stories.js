@@ -227,9 +227,6 @@ const StyledDemo = withStyles(() => ({
 
 storiesOf("Colors", module).add("Default", () => (
   <div>
-    <div>
-      <h2></h2>
-      <StyledDemo />
-    </div>
+    <StyledDemo />
   </div>
 ));
