@@ -11,7 +11,7 @@ import {
   RED_50,
   WHITE,
   BLACK
-} from "../../styles/colours";
+} from "../../styles/colors";
 
 const styles = theme => {
   return {

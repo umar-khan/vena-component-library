@@ -3,3 +3,5 @@ export { default as FlatButton } from "./components/Buttons/FlatButton";
 export { default as Select } from "./components/Inputs/Select";
 export { default as Switch } from "./components/Switches/Switch";
 export { default as TextField } from "./components/Inputs/TextField";
+
+export * from "./styles/colors";
