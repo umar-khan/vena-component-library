@@ -3,14 +3,14 @@ import PropTypes from "prop-types";
 import { withStyles } from "@material-ui/core/styles";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
 import MuiSwitch from "@material-ui/core/Switch";
-import { GREEN_50, GRAY_50, GRAY_70, WHITE } from "../../styles/colors";
+import { GREEN_70, GRAY_50, GRAY_70, WHITE } from "../../styles/colors";
 
 const styles = theme => ({
   switchBase: {
     "&$switchChecked": {
       color: WHITE,
       "& + $switchBar": {
-        backgroundColor: GREEN_50
+        backgroundColor: GREEN_70
       }
     },
     transition: theme.transitions.create("transform", {
@@ -40,7 +40,7 @@ const styles = theme => ({
     boxShadow: "none"
   },
   switchLabelOn: {
-    color: GREEN_50,
+    color: GREEN_70,
     fontWeight: 700,
     fontSize: 12,
     marginTop: 1,
