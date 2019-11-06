@@ -5,8 +5,8 @@ import MuiButton from "@material-ui/core/Button";
 import CircularProgress from "@material-ui/core/CircularProgress";
 import {
   GREEN_30,
-  GREEN_50,
   GREEN_70,
+  GREEN_90,
   BLUE_30,
   BLUE_70,
   BLUE_90,
@@ -88,10 +88,10 @@ const styles = theme => {
       }
     },
     confirmation: {
-      backgroundColor: GREEN_50,
+      backgroundColor: GREEN_70,
 
       "&:hover": {
-        backgroundColor: GREEN_70
+        backgroundColor: GREEN_90
       },
 
       "&:disabled": {
