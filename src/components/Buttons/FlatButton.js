@@ -7,6 +7,7 @@ import {
   BLUE_10,
   BLUE_50,
   GRAY_50,
+  GRAY_90,
   RED_10,
   RED_50,
   BLACK
@@ -42,9 +43,10 @@ const styles = theme => {
       }
     },
     secondary: {
-      color: BLACK,
+      color: GRAY_90,
 
       "&:hover": {
+        color: BLACK,
         backgroundColor: GRAY_50
       }
     },
